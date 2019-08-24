@@ -1,0 +1,16 @@
+version: 2
+jobs:
+  build:
+    machine: true
+    parallelism: 1
+    working_directory: ~/codeception-wp-plugin
+    steps:
+      - checkout
+      - run:
+          name: Run acceptance tests
+          command: |
+            docker-compose run --rm codeception run --html --xml -vvv
+      - store_artifacts:
+          path: ~/codeception-wp-plugin/tests/_output
+      - store_test_results:
+          path: ~/codeception-wp-plugin/tests/_output
