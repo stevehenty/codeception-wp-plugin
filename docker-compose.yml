@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+
+  codeception:
+    image: stevehenty/wp-browser
+    depends_on:
+      - wordpress
+    volumes:
+      - ./:/project
+      - wp-core:/wp-core
+      - ./:/wp-core/wp-content/plugins/codeception-wp-plugin
+    entrypoint: /docker-entrypoint.sh
+
+  wordpress:
+    image: wordpress:latest
+    depends_on:
+      - mysql
+      - chrome
+    volumes:
+      - wp-core:/var/www/html
+      - ./:/var/www/html/wp-content/plugins/codeception-wp-plugin
+    ports:
+      - 8080:80
+      - 80:80
+    environment:
+      WORDPRESS_DB_PASSWORD: wordpress
+
+  mysql:
+    image: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: wordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+  chrome:
+    environment:
+      - DBUS_SESSION_BUS_ADDRESS=/dev/null
+    volumes:
+      - /dev/shm:/dev/shm
+    image: selenium/standalone-chrome-debug:3.141.59-neon
+    ports:
+      - '5900:5900'
+
+volumes:
+  wp-core:

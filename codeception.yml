@@ -1,0 +1,30 @@
+actor: Tester
+params:
+  - env
+
+paths:
+  tests: tests
+  log: tests/_output
+  data: tests/_data
+  helpers: tests/_support
+settings:
+  colors: true
+  memory_limit: 1024M
+modules:
+  config:
+    WPWebDriver:
+      host: chrome
+      url: 'http://wordpress'
+      browser: chrome
+      adminUsername: admin
+      adminPassword: password
+      adminPath: /wp-admin
+    WPLoader:
+      wpRootFolder: /wp-core
+      dbName: wordpress
+      dbHost: mysql
+      dbUser: wordpress
+      dbPassword: wordpress
+      tablePrefix: wp_
+      domain: wordpress
+      plugins: ['codeception-wp-plugin/hello.php']
