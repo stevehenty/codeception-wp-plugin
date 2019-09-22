@@ -8,6 +8,11 @@ Author URI: http://stevenhenty.com
 */
 
 
-add_action( 'wp_footer', function() {
-	echo 'Hello Codeception';
-} );
+add_action( 'wp_footer', 'my_footer' );
+
+/**
+ * Output a link in the footer.
+ */
+function my_footer() {
+	echo '<a href="/hello">Hola Codeception</a>';
+}
