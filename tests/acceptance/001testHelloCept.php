@@ -9,8 +9,5 @@ $I->amOnPage( '/' );
 
 $I->see( 'Hello Codeception' );
 
-$I->click( 'Hello Codeception' );
-
-$I->see( 'Welcome' );
 
 

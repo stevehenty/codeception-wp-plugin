@@ -14,5 +14,5 @@ add_action( 'wp_footer', 'my_footer' );
  * Output a link in the footer.
  */
 function my_footer() {
-	echo '<a href="/hello">Hello Codeception</a>';
+	echo 'Hello Codeception';
 }
