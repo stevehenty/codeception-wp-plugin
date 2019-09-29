@@ -11,7 +11,7 @@ $wp_rewrite->flush_rules();
  *
  * @param string $content
  *
- * @return int|string|WP_Error
+ * @return int|WP_Error The post ID on success. The value 0 or WP_Error on failure.
  */
 function create_post( $name, $content ) {
 	$post = array(
@@ -24,7 +24,7 @@ function create_post( $name, $content ) {
 
 	$post_id = wp_insert_post( $post );
 
-	return $post_id ? $post_id : '';
+	return $post_id;
 }
 
 create_post( 'hello', 'Welcome' );
