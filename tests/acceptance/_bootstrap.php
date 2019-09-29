@@ -1,25 +1,21 @@
 <?php
 
-global $wp_rewrite;
-$wp_rewrite->set_permalink_structure( '/%postname%/' );
-$wp_rewrite->flush_rules();
-
 /**
- * Creates a new post with the given slug and content.
+ * Creates a new page with the given slug and content.
  *
- * @param string $name The post name
+ * @param string $name The page name
  *
  * @param string $content
  *
  * @return int|string|WP_Error
  */
-function create_post( $name, $content ) {
+function create_page( $name, $content ) {
 	$post = array(
 		'post_title'   => $name,
 		'post_content' => $content,
 		'post_excerpt' => $name,
 		'post_status'  => 'publish',
-		'post_type'    => 'post',
+		'post_type'    => 'page',
 	);
 
 	$post_id = wp_insert_post( $post );
@@ -27,5 +23,5 @@ function create_post( $name, $content ) {
 	return $post_id ? $post_id : '';
 }
 
-create_post( 'hello', 'Welcome' );
-create_post( 'bye', 'Goodbye' );
+create_page( 'hello', 'Welcome' );
+create_page( 'bye', 'Goodbye' );
