@@ -3,11 +3,12 @@
 /** @var \Codeception\Scenario $scenario */
 $I = new AcceptanceTester( $scenario );
 
-$I->wantTo( 'Test that Hello Codeception works.' );
+$I->wantTo( 'Test that Post Commenting works.' );
 
 $I->amOnPage( '/hello' );
 
 $I->see( 'Welcome' );
+$I->see( 'Hello Codeception' );
 
 $I->click( 'Leave a comment' );
 $I->fillField( 'Comment', 'Great post!' );
