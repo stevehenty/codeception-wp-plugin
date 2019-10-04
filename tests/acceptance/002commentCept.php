@@ -14,6 +14,8 @@ $I->click( 'Leave a comment' );
 $I->fillField( 'Comment', 'Great post!' );
 $I->fillField( 'Name', 'Great post!' );
 $I->fillField( 'Email', 'test@test.com' );
+
+// Activate the interactive console.
 //$I->pause();
 $I->click( 'Post Comment' );
 
